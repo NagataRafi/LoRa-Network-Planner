@@ -70,5 +70,6 @@ Lihat bagian 4 `PRD.md`. Kunci `localStorage`: `lora-planner-v1`. Jika format da
 
 ## 9. Status Implementasi
 - Tahap 1 selesai (2026-10-20): `js/lora.js` dan `tests/lora.test.js` dibuat. Delapan fungsi `LoRa` aktif dan lulus 11 angka uji PRD bagian 8 lewat `node --test`.
-- Belum ada `index.html`, `css/`, `store.js`, `mapview.js`, `panels.js`, `app.js` (Tahap 2-5).
+- Tahap 2 selesai (2026-10-20): `index.html`, `css/style.css`, `js/store.js`, `js/mapview.js`, `js/app.js` dibuat. Peta Leaflet, tiga mode toolbar, marker draggable + popup Hapus, simpan localStorage, Reset berkonfirmasi. Tag `<script>` `panels.js` belum ada karena `js/panels.js` dibuat di Tahap 3.
+- Belum ada: `js/panels.js` (Tahap 3), impor/ekspor (Tahap 4), sfOtomatis aktif di `analyze` (Tahap 5).
 - Perbarui bagian ini setiap tahap selesai.

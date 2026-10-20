@@ -1,0 +1,107 @@
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  color: #222;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #263238;
+  color: #fff;
+}
+
+.toolbar h1 {
+  font-size: 16px;
+  margin: 0 12px 0 0;
+}
+
+.toolbar button {
+  padding: 6px 10px;
+  border: 1px solid #90a4ae;
+  border-radius: 4px;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+}
+
+.toolbar button.aktif {
+  background: #1976d2;
+  border-color: #1976d2;
+  color: #fff;
+}
+
+#btn-reset {
+  margin-left: auto;
+  background: #c62828;
+  border-color: #c62828;
+  color: #fff;
+}
+
+/* Peta */
+#peta {
+  flex: 1;
+  min-height: 320px;
+}
+
+/* Marker perangkat */
+.marker-gw {
+  width: 16px;
+  height: 16px;
+  background: #1976d2;
+  border: 2px solid #0d47a1;
+}
+
+.marker-node {
+  width: 16px;
+  height: 16px;
+  background: #ff9800;
+  border: 2px solid #b35c00;
+  border-radius: 50%;
+}
+
+.label-nama {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #111;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+}
+
+.leaflet-popup-content button {
+  margin-top: 6px;
+  padding: 4px 10px;
+  border: 1px solid #c62828;
+  border-radius: 4px;
+  background: #c62828;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Layar kecil */
+@media (max-width: 640px) {
+  .toolbar h1 {
+    width: 100%;
+    margin: 0;
+  }
+
+  #btn-reset {
+    margin-left: 0;
+  }
+}

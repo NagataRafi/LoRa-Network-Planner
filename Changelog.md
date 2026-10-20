@@ -17,6 +17,20 @@ Aturan: entri terbaru ditulis di **paling atas** (di bawah garis pemisah ini). J
 
 ---
 
+## [0.2.0] - 2026-10-20 23:54 (WIB)
+- Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
+- Tahap: Tahap 2 (peta dan perangkat)
+- Ringkasan: Peta Leaflet, tiga mode toolbar, tambah/geser/hapus marker, simpan otomatis ke localStorage, dan tombol Reset berkonfirmasi.
+- Perubahan:
+  - Menambah `index.html` (Leaflet 1.9.4 CDN, toolbar, div peta; tag `panels.js` menyusul Tahap 3)
+  - Menambah `css/style.css` (toolbar, marker kotak biru/lingkaran oranye, label nama, responsif dasar)
+  - Menambah `js/store.js` (`get`, `update`, `addDevice`, `moveDevice`, `removeDevice`, `reset`, `subscribe`; localStorage `lora-planner-v1`, gagal baca → state awal)
+  - Menambah `js/mapview.js` (`init`, `setMode`, `render`; tile OSM atribusi "© OpenStreetMap contributors", marker `L.divIcon` draggable, label tooltip permanen, popup tombol Hapus)
+  - Menambah `js/app.js` (pasang mode toolbar, tombol Reset dengan konfirmasi, `Store.subscribe` → `MapView.render`)
+- File terdampak: index.html, css/style.css, js/store.js, js/mapview.js, js/app.js
+- Pengujian: `node --check` pada 4 file JS lulus tanpa galat; `node --test tests/*` → 11/11 lulus. Uji manual browser (klik peta, geser, hapus, reset) belum dilakukan.
+- Catatan: Leaflet CDN gagal dimuat → peta menampilkan pesan, modul lain tetap jalan. Garis link, lingkaran cakupan, dan panel parameter masuk Tahap 3. Langkah berikutnya: Tahap 3, menunggu persetujuan pengguna.
+
 ## [0.1.0] - 2026-10-20 23:47 (WIB)
 - Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
 - Tahap: Tahap 1 (logika murni dan tes)
