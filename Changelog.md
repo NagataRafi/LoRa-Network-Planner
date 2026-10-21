@@ -17,6 +17,30 @@ Aturan: entri terbaru ditulis di **paling atas** (di bawah garis pemisah ini). J
 
 ---
 
+## [0.5.3] - 2026-10-21 10:26 (WIB)
+- Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis, atas perintah pemilik proyek
+- Tahap: dokumen (finalisasi repo)
+- Ringkasan: Menambah `README.md` berbahasa Indonesia untuk publikasi repo; `LICENSE` (MIT) ikut masuk repo untuk pertama kalinya.
+- Perubahan:
+  - Menambah `README.md`: header dengan badge shields.io, ringkasan, fitur sesuai kode, cara menjalankan lewat server lokal, cara menjalankan tes, cara pakai singkat, rumus dari `js/lora.js`, struktur proyek, batasan, atribusi OSM dan Leaflet, lisensi MIT
+  - `LICENSE` (MIT, Copyright 2026 Muhammad Rafi Nagata Afendi) berhenti berupa file lokal dan di-commit ke repo tanpa perubahan isi
+- File terdampak: README.md, LICENSE (baru terlacak)
+- Pengujian: tidak berlaku (dokumen). Isi README diverifikasi manual terhadap kode: `index.html`, `css/style.css`, `js/*.js`, `tests/lora.test.js`.
+- Catatan: `docs/screenshot.png` tidak ada, jadi README tidak merujuk gambar. Belum di-commit; menunggu persetujuan pesan commit.
+
+## [0.5.2] - 2026-10-21 10:04 (WIB)
+- Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis, atas perintah pemilik proyek
+- Tahap: perbaikan (di luar 5 tahap, permintaan pengguna)
+- Ringkasan: Tile OSM ditolak 403 dari `file://` karena tanpa header Referer; aplikasi kini dinyatakan berjalan lewat server lokal dan tile gagal menampilkan pesan.
+- Perubahan:
+  - Mengubah `js/mapview.js`: handler `tileerror` pada tile layer, satu pesan singkat di halaman "Peta gagal dimuat. Jalankan aplikasi lewat server lokal (http://localhost), bukan file://, dan periksa internet."
+  - Mengubah `css/style.css`: gaya `.pesan-tile`
+  - Mengubah `PRD.md` bagian 2 dan 10: aplikasi dijalankan lewat server lokal (Live Server atau `python -m http.server`), bukan klik dua kali, karena tile OpenStreetMap butuh header Referer
+  - Mengubah `ARSITEKTUR.md` bagian 7: keputusan teknis server lokal, sama alasannya
+- File terdampak: js/mapview.js, css/style.css, PRD.md, ARSITEKTUR.md
+- Pengujian: `node --test tests/` dijalankan, hasil dicatat di bawah. Logika perhitungan tidak disentuh.
+- Catatan: Perubahan `PRD.md` dan `ARSITEKTUR.md` atas persetujuan eksplisit pemilik proyek. Belum di-commit; menunggu uji browser.
+
 ## [0.5.1] - 2026-10-21 09:52 (WIB)
 - Penanggung jawab: Pemilik proyek (pengguna), dieksekusi oleh Pengembang Web (Frontend) dan Penanggung Jawab Teknis
 - Tahap: dokumen (chore)
