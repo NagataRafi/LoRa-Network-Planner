@@ -17,6 +17,19 @@ Aturan: entri terbaru ditulis di **paling atas** (di bawah garis pemisah ini). J
 
 ---
 
+## [0.4.0] - 2026-10-21 09:37 (WIB)
+- Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
+- Tahap: Tahap 4 (impor dan ekspor)
+- Ringkasan: Ekspor/impor berkas JSON dengan validasi struktur dan ekspor tabel hasil ke CSV.
+- Perubahan:
+  - Mengubah `js/store.js`: menambah `exportJson()` (string JSON state) dan `importJson(text)` dengan `validasiImpor` (struktur, tipe, angka, id kembar); impor gagal tidak mengubah state lama
+  - Mengubah `js/panels.js`: tombol Ekspor JSON, Impor JSON (pemilih berkas tersembunyi + FileReader, pesan gagal jelas), Ekspor CSV (pemisah koma, header kolom, angka 2 desimal, kutip teks berisi koma), fungsi `exportCsv`
+  - Mengubah `index.html`: tiga tombol aksi di toolbar
+  - Mengubah `css/style.css`: gaya `.aksi`
+- File terdampak: js/store.js, js/panels.js, index.html, css/style.css
+- Pengujian: `node --check` lulus; pemeriksaan Node khusus `importJson` → 9/9 lolos (valid diterima, JSON rusak ditolak, state lama utuh, devices bukan daftar, id kembar, Ptx bukan angka, tipe tak dikenal, global hilang, ekspor-impor ulang); `node --test tests/*` → 11/11 lulus.
+- Catatan: Pemeriksaan `importJson` dijalankan lewat skrip sementara di Temp, bukan berkas tes proyek (struktur file PRD hanya mengizinkan `tests/lora.test.js`). Langkah berikutnya: Tahap 5 (SF rekomendasi dan penyempurnaan), menunggu persetujuan pengguna.
+
 ## [0.3.0] - 2026-10-21 00:10 (WIB)
 - Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
 - Tahap: Tahap 3 (analisis visual dan panel parameter)

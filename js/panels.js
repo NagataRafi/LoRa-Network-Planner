@@ -52,6 +52,77 @@ var Panels = (function () {
     return el;
   }
 
+  function unduh(filename, teks, mime) {
+    var blob = new Blob([teks], { type: mime });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function csvField(v) {
+    var s = String(v);
+    if (s.indexOf(',') >= 0 || s.indexOf('"') >= 0 || s.indexOf('\n') >= 0) {
+      s = '"' + s.replace(/"/g, '""') + '"';
+    }
+    return s;
+  }
+
+  // Tabel hasil ke CSV: pemisah koma, header kolom, angka 2 desimal
+  function exportCsv(hasil) {
+    var baris = [['Node', 'Gateway terbaik', 'Jarak (km)', 'RSSI (dBm)',
+      'FM (dB)', 'Status', 'SF rekomendasi']];
+    if (hasil) {
+      hasil.nodes.forEach(function (r) {
+        var ada = r.status !== 'Tanpa gateway';
+        baris.push([
+          r.name,
+          ada ? r.bestGwName : '-',
+          ada ? n2(r.distKm) : '-',
+          ada ? n2(r.rssiDbm) : '-',
+          ada ? n2(r.fmDb) : '-',
+          r.status,
+          '-'
+        ]);
+      });
+    }
+    var teks = baris.map(function (b) {
+      return b.map(csvField).join(',');
+    }).join('\r\n');
+    unduh('hasil-analisis.csv', teks, 'text/csv;charset=utf-8');
+  }
+
+  function pickFile() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json,application/json';
+    input.style.display = 'none';
+    document.body.appendChild(input);
+    input.addEventListener('change', function () {
+      var f = this.files[0];
+      this.value = '';
+      if (!f) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        var hasil = Store.importJson(String(reader.result));
+        if (hasil.ok) {
+          alert('Impor berhasil.');
+        } else {
+          alert('Impor gagal: ' + hasil.pesan + '\nData lama tidak berubah.');
+        }
+      };
+      reader.onerror = function () {
+        alert('Berkas tidak bisa dibaca.');
+      };
+      reader.readAsText(f);
+    });
+    return input;
+  }
+
   function init() {
     $('inp-f').addEventListener('input', function () {
       Store.update({ fMHz: parseFloat(this.value) });
@@ -75,6 +146,17 @@ var Panels = (function () {
     });
     $('inp-margin').addEventListener('input', function () {
       Store.update({ marginTargetDb: parseFloat(this.value) });
+    });
+
+    var file = pickFile();
+    $('btn-ekspor-json').addEventListener('click', function () {
+      unduh('lora-planner.json', Store.exportJson(), 'application/json');
+    });
+    $('btn-impor-json').addEventListener('click', function () {
+      file.click();
+    });
+    $('btn-ekspor-csv').addEventListener('click', function () {
+      exportCsv(lastHasil);
     });
   }
 
@@ -223,5 +305,5 @@ var Panels = (function () {
     if (lastState) render(lastState, lastHasil);
   }
 
-  return { init: init, render: render, selectDevice: selectDevice };
+  return { init: init, render: render, selectDevice: selectDevice, exportCsv: exportCsv };
 })();

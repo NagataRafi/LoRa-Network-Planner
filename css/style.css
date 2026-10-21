@@ -44,6 +44,12 @@ body {
   color: #fff;
 }
 
+.aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 #btn-reset {
   margin-left: auto;
   background: #c62828;
