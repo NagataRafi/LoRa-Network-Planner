@@ -17,6 +17,17 @@ Aturan: entri terbaru ditulis di **paling atas** (di bawah garis pemisah ini). J
 
 ---
 
+## [0.5.4] - 2026-10-21 10:30 (WIB)
+- Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis, atas persetujuan pemilik proyek
+- Tahap: perbaikan (penutup)
+- Ringkasan: Perbaikan pesan tile 403 (entri 0.5.2) dikomit setelah lolos uji browser, ditambah .gitignore untuk file JSON hasil ekspor.
+- Perubahan:
+  - Mengubah `js/mapview.js` dan `css/style.css`: handler `tileerror` + pesan `.pesan-tile` (sudah diuji pengguna di browser)
+  - Mengubah `.gitignore`: menambah `tests/lora-planner*.json` (hasil uji tombol Ekspor JSON yang tak sengaja tersimpan di tests/)
+- File terdampak: js/mapview.js, css/style.css, .gitignore
+- Pengujian: uji browser oleh pemilik proyek dinyatakan memuaskan; `node --test tests/*` → 11/11 lulus.
+- Catatan: Repo siap dipublikasikan. Lima tahap PRD selesai.
+
 ## [0.5.3] - 2026-10-21 10:26 (WIB)
 - Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis, atas perintah pemilik proyek
 - Tahap: dokumen (finalisasi repo)

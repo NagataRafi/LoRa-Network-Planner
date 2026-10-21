@@ -1,6 +1,9 @@
 # Plugin pihak ketiga, bukan bagian proyek
 ponytail/
 
+# Hasil uji tombol Ekspor JSON yang tak sengaja tersimpan di tests/
+tests/lora-planner*.json
+
 # Dokumen internal (dibaca AI tiap sesi, tidak ikut repo)
 /PRD.md
 /Tujuan.md

@@ -96,10 +96,19 @@ var MapView = (function () {
       return;
     }
     map = L.map(el).setView([-7.2575, 112.7521], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    var pesanTile = null;
+    var tile = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+    });
+    tile.on('tileerror', function () {
+      if (pesanTile) return;
+      pesanTile = document.createElement('div');
+      pesanTile.className = 'pesan-tile';
+      pesanTile.textContent = 'Peta gagal dimuat. Jalankan aplikasi lewat server lokal (http://localhost), bukan file://, dan periksa internet.';
+      el.appendChild(pesanTile);
+    });
+    tile.addTo(map);
     circles = L.layerGroup().addTo(map);
     lines = L.layerGroup().addTo(map);
     markers = L.layerGroup().addTo(map);

@@ -210,6 +210,23 @@ body {
   cursor: pointer;
 }
 
+/* Pesan tile gagal */
+.pesan-tile {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  max-width: 90%;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+  color: #c62828;
+  font-weight: 600;
+  text-align: center;
+}
+
 /* Legenda status di peta */
 .legenda {
   background: #fff;
