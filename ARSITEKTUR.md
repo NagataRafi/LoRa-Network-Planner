@@ -51,9 +51,9 @@ Perubahan state hanya lewat `Store`. Modul lain tidak boleh mengubah state atau 
 
 ## 5. Fungsi Utama (Rencana)
 - `LoRa`: `distanceKm`, `pathLoss`, `sensitivity`, `linkResult`, `statusOf`, `maxRangeKm`, `recommendSf`, `analyze`
-- `Store`: `get`, `update`, `addDevice`, `moveDevice`, `removeDevice`, `reset`, `subscribe`, `exportJson`, `importJson`
+- `Store`: `get`, `update`, `addDevice`, `moveDevice`, `updateDevice`, `removeDevice`, `reset`, `subscribe` (Tahap 4 menambah `exportJson`, `importJson`)
 - `MapView`: `init`, `setMode`, `render`
-- `Panels`: `init`, `render`, `exportCsv`
+- `Panels`: `init`, `render`, `selectDevice` (Tahap 4 menambah `exportCsv`)
 
 ## 6. Model Data
 Lihat bagian 4 `PRD.md`. Kunci `localStorage`: `lora-planner-v1`. Jika format data berubah, naikkan versi kunci dan catat di `CHANGELOG.md`.
@@ -71,5 +71,6 @@ Lihat bagian 4 `PRD.md`. Kunci `localStorage`: `lora-planner-v1`. Jika format da
 ## 9. Status Implementasi
 - Tahap 1 selesai (2026-10-20): `js/lora.js` dan `tests/lora.test.js` dibuat. Delapan fungsi `LoRa` aktif dan lulus 11 angka uji PRD bagian 8 lewat `node --test`.
 - Tahap 2 selesai (2026-10-20): `index.html`, `css/style.css`, `js/store.js`, `js/mapview.js`, `js/app.js` dibuat. Peta Leaflet, tiga mode toolbar, marker draggable + popup Hapus, simpan localStorage, Reset berkonfirmasi. Tag `<script>` `panels.js` belum ada karena `js/panels.js` dibuat di Tahap 3.
-- Belum ada: `js/panels.js` (Tahap 3), impor/ekspor (Tahap 4), sfOtomatis aktif di `analyze` (Tahap 5).
+- Tahap 3 selesai (2026-10-21): `js/panels.js` dibuat, `index.html`, `css/style.css`, `js/mapview.js`, `js/app.js` diperbarui, `js/store.js` menambah `updateDevice`. Garis link berwarna status, lingkaran cakupan, legenda, tabel hasil, ringkasan aktif.
+- Belum ada: impor/ekspor JSON dan CSV (Tahap 4), kolom SF rekomendasi terisi dan `sfOtomatis` aktif (Tahap 5).
 - Perbarui bagian ini setiap tahap selesai.

@@ -9,7 +9,17 @@
     MapView.setMode(m);
   }
 
+  function refresh(state) {
+    var g = state.global;
+    var valid = g.fMHz > 0 && g.bwKHz > 0 && !isNaN(g.nfDb) && !isNaN(g.marginTargetDb);
+    var hasil = valid ? LoRa.analyze(state) : null;
+    MapView.render(state, hasil);
+    Panels.render(state, hasil);
+  }
+
   function init() {
+    Panels.init();
+
     var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-mode]'));
     buttons.forEach(function (b) {
       b.addEventListener('click', function () {
@@ -26,13 +36,17 @@
       el: 'peta',
       onAdd: function (type, latlng) {
         Store.addDevice({ type: type, lat: latlng.lat, lng: latlng.lng });
+      },
+      onSelect: function (id) {
+        Panels.selectDevice(id);
+      },
+      onDeselect: function () {
+        Panels.selectDevice(null);
       }
     });
 
-    Store.subscribe(function (state) {
-      MapView.render(state);
-    });
-    MapView.render(Store.get());
+    Store.subscribe(refresh);
+    refresh(Store.get());
   }
 
   init();

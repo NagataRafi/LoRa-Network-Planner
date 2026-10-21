@@ -17,6 +17,21 @@ Aturan: entri terbaru ditulis di **paling atas** (di bawah garis pemisah ini). J
 
 ---
 
+## [0.3.0] - 2026-10-21 00:10 (WIB)
+- Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
+- Tahap: Tahap 3 (analisis visual dan panel parameter)
+- Ringkasan: Panel parameter global, form edit perangkat, garis link berwarna sesuai status, lingkaran cakupan, legenda, tabel hasil, dan ringkasan.
+- Perubahan:
+  - Menambah `js/panels.js` (`init`, `render`, `selectDevice`): form frekuensi (preset 433/868/915/923 + bebas), SF, BW, NF, lingkungan, margin target; form edit nama/Ptx/gain/rugi; tabel hasil (kolom SF rekomendasi diisi "-" sampai Tahap 5); ringkasan gateway/node/terhubung/persentase/rata-rata FM
+  - Mengubah `index.html`: layout panel kiri + peta kanan, markup form global, tabel hasil, tag `panels.js`
+  - Mengubah `css/style.css`: gaya panel, input tidak valid (merah), tabel, legenda, responsif <= 900px
+  - Mengubah `js/mapview.js`: tiga layer group (lingkaran, garis, marker), garis node→gateway terbaik berwarna sesuai status (putus-putus merah untuk Putus), popup garis (jarak, path loss, RSSI, sensitivitas, FM), lingkaran cakupan transparan, legenda status, callback `onSelect`/`onDeselect`
+  - Mengubah `js/store.js`: menambah `updateDevice(id, patch)`
+  - Mengubah `js/app.js`: hitung `LoRa.analyze(state)` lalu teruskan ke `MapView.render` dan `Panels.render`; parameter tidak valid → hasil null, perhitungan berhenti
+- File terdampak: index.html, css/style.css, js/panels.js, js/mapview.js, js/store.js, js/app.js
+- Pengujian: `node --check` 4 file JS lulus; `node --test tests/*` → 11/11 lulus. Uji manual browser belum dilakukan.
+- Catatan: `Store.updateDevice` baru (tidak ada di daftar fungsi ARSITEKTUR lama) karena Tahap 3 perlu edit perangkat; `ARSITEKTUR.md` bagian 5 ikut diperbarui. Langkah berikutnya: Tahap 4 (impor/ekspor), menunggu persetujuan pengguna.
+
 ## [0.2.0] - 2026-10-20 23:54 (WIB)
 - Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
 - Tahap: Tahap 2 (peta dan perangkat)

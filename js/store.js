@@ -114,6 +114,15 @@ var Store = (function () {
     notify();
   }
 
+  // Gabungkan patch ke satu perangkat (nama dan parameter)
+  function updateDevice(id, patch) {
+    var dev = find(id);
+    if (!dev) return;
+    for (var k in patch) dev[k] = patch[k];
+    save();
+    notify();
+  }
+
   function removeDevice(id) {
     state.devices = state.devices.filter(function (d) { return d.id !== id; });
     save();
@@ -137,6 +146,7 @@ var Store = (function () {
     update: update,
     addDevice: addDevice,
     moveDevice: moveDevice,
+    updateDevice: updateDevice,
     removeDevice: removeDevice,
     reset: reset,
     subscribe: subscribe
