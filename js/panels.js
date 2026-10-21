@@ -86,7 +86,7 @@ var Panels = (function () {
           ada ? n2(r.rssiDbm) : '-',
           ada ? n2(r.fmDb) : '-',
           r.status,
-          '-'
+          ada ? String(r.sfRecommend) : '-'
         ]);
       });
     }
@@ -147,6 +147,9 @@ var Panels = (function () {
     $('inp-margin').addEventListener('input', function () {
       Store.update({ marginTargetDb: parseFloat(this.value) });
     });
+    $('chk-sf-auto').addEventListener('change', function () {
+      Store.update({ sfOtomatis: this.checked });
+    });
 
     var file = pickFile();
     $('btn-ekspor-json').addEventListener('click', function () {
@@ -171,6 +174,18 @@ var Panels = (function () {
     setSel($('sel-env'), g.env);
     setNum($('inp-margin'), g.marginTargetDb);
     mark($('inp-margin'), !isNaN(g.marginTargetDb));
+    $('chk-sf-auto').checked = g.sfOtomatis === true;
+  }
+
+  function renderPesan(hasil) {
+    var p = $('pesan-error');
+    if (hasil) {
+      p.textContent = '';
+      p.hidden = true;
+      return;
+    }
+    p.textContent = 'Parameter tidak valid: periksa frekuensi dan BW (harus lebih besar dari 0) serta NF dan margin target (harus angka).';
+    p.hidden = false;
   }
 
   function renderPerangkat(state) {
@@ -247,7 +262,7 @@ var Panels = (function () {
       tambah(tr, ada ? n2(r.fmDb) : '-');
       var st = tambah(tr, r.status);
       st.className = 'st-' + r.status.toLowerCase().replace(/ /g, '-');
-      tambah(tr, '-'); // diisi pada Tahap 5
+      tambah(tr, ada ? String(r.sfRecommend) : '-');
       tbody.appendChild(tr);
     });
   }
@@ -297,6 +312,7 @@ var Panels = (function () {
     renderPerangkat(state);
     renderTabel(hasil);
     renderRingkasan(hasil);
+    renderPesan(hasil);
   }
 
   function selectDevice(id) {

@@ -76,18 +76,23 @@ var LoRa = (function () {
     return dMeter / 1000;
   }
 
+  function withSf(global, sf) {
+    var g = {};
+    for (var k in global) g[k] = global[k];
+    g.sf = sf;
+    return g;
+  }
+
   // SF terkecil 7..12 dengan FM >= margin target, atau "Tidak ada"
   function recommendSf(node, gw, global) {
     for (var sf = 7; sf <= 12; sf++) {
-      var g = {};
-      for (var k in global) g[k] = global[k];
-      g.sf = sf;
-      if (linkResult(node, gw, g).fmDb >= global.marginTargetDb) return sf;
+      if (linkResult(node, gw, withSf(global, sf)).fmDb >= global.marginTargetDb) return sf;
     }
     return 'Tidak ada';
   }
 
   // Hasil per node dan jari-jari per gateway. Tidak mengubah state.
+  // sfOtomatis: tiap node dihitung dengan SF rekomendasinya (jika tidak ada, SF12).
   function analyze(state) {
     var global = state.global;
     var devices = state.devices || [];
@@ -107,7 +112,12 @@ var LoRa = (function () {
           bestGw = gw;
         }
       });
-      var r = linkResult(node, bestGw, global);
+      var sfRec = recommendSf(node, bestGw, global);
+      var sf = global.sf;
+      if (global.sfOtomatis) {
+        sf = sfRec === 'Tidak ada' ? 12 : sfRec;
+      }
+      var r = linkResult(node, bestGw, withSf(global, sf));
       return {
         id: node.id,
         name: node.name,
@@ -120,7 +130,7 @@ var LoRa = (function () {
         fmDb: r.fmDb,
         status: r.status,
         sf: r.sf,
-        sfRecommend: recommendSf(node, bestGw, global)
+        sfRecommend: sfRec
       };
     });
 

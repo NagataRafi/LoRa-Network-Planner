@@ -70,8 +70,9 @@ Lihat bagian 4 `PRD.md`. Kunci `localStorage`: `lora-planner-v1`. Jika format da
 
 ## 9. Status Implementasi
 - Tahap 1 selesai (2026-10-20): `js/lora.js` dan `tests/lora.test.js` dibuat. Delapan fungsi `LoRa` aktif dan lulus 11 angka uji PRD bagian 8 lewat `node --test`.
-- Tahap 2 selesai (2026-10-20): `index.html`, `css/style.css`, `js/store.js`, `js/mapview.js`, `js/app.js` dibuat. Peta Leaflet, tiga mode toolbar, marker draggable + popup Hapus, simpan localStorage, Reset berkonfirmasi. Tag `<script>` `panels.js` belum ada karena `js/panels.js` dibuat di Tahap 3.
-- Tahap 3 selesai (2026-10-21): `js/panels.js` dibuat, `index.html`, `css/style.css`, `js/mapview.js`, `js/app.js` diperbarui, `js/store.js` menambah `updateDevice`. Garis link berwarna status, lingkaran cakupan, legenda, tabel hasil, ringkasan aktif.
-- Tahap 4 selesai (2026-10-21): `exportJson`/`importJson` di `js/store.js` dengan validasi struktur, `exportCsv` dan tombol Ekspor/Impor di `js/panels.js`, tombol aksi di toolbar.
-- Belum ada: kolom SF rekomendasi terisi dan `sfOtomatis` aktif di `analyze` (Tahap 5), penyempurnaan responsif.
+- Tahap 2 selesai (2026-10-20): `index.html`, `css/style.css`, `js/store.js`, `js/mapview.js`, `js/app.js` dibuat. Peta Leaflet, tiga mode toolbar, marker draggable + popup Hapus, simpan localStorage, Reset berkonfirmasi.
+- Tahap 3 selesai (2026-10-21): `js/panels.js` dibuat, panel parameter, garis link berwarna status, lingkaran cakupan, legenda, tabel hasil, ringkasan aktif. `js/store.js` menambah `updateDevice`.
+- Tahap 4 selesai (2026-10-21): `exportJson`/`importJson` dengan validasi struktur, `exportCsv`, tombol Ekspor/Impor di toolbar.
+- Tahap 5 selesai (2026-10-21): `analyze` menghormati `sfOtomatis` (fallback SF12), kolom SF rekomendasi terisi di tabel dan CSV, checkbox SF otomatis, pesan kesalahan parameter.
+- Lima tahap PRD selesai. Sisa pekerjaan: uji manual di browser oleh pemilik proyek.
 - Perbarui bagian ini setiap tahap selesai.

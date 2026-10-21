@@ -120,6 +120,25 @@ body {
   margin: 6px 0;
 }
 
+.cek {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 12px 0 0;
+  font-weight: 600;
+}
+
+.cek input {
+  width: auto;
+  margin-top: 2px;
+}
+
+.pesan {
+  color: #c62828;
+  font-weight: 600;
+  margin: 8px 0 0;
+}
+
 .ringkasan-baris {
   margin: 3px 0;
 }

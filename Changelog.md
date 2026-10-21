@@ -17,6 +17,19 @@ Aturan: entri terbaru ditulis di **paling atas** (di bawah garis pemisah ini). J
 
 ---
 
+## [0.5.0] - 2026-10-21 09:45 (WIB)
+- Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
+- Tahap: Tahap 5 (SF rekomendasi dan penyempurnaan)
+- Ringkasan: Kolom SF rekomendasi terisi di tabel dan CSV, opsi SF otomatis per node aktif, pesan kesalahan parameter tampil di panel.
+- Perubahan:
+  - Mengubah `js/lora.js`: `analyze` menghormati `global.sfOtomatis` — tiap node dihitung dengan SF rekomendasinya, fallback SF12 jika "Tidak ada"; `recommendSf` memakai helper `withSf`
+  - Mengubah `js/panels.js`: kolom SF rekomendasi terisi (`sfRecommend`), checkbox `chk-sf-auto`, `renderPesan` untuk parameter tidak valid, CSV ikut membawa SF rekomendasi
+  - Mengubah `index.html`: checkbox "SF otomatis", elemen `pesan-error`
+  - Mengubah `css/style.css`: gaya `.cek` dan `.pesan`
+- File terdampak: js/lora.js, js/panels.js, index.html, css/style.css
+- Pengujian: `node --check` lulus; `node --test tests/*` → 11/11 lulus (angka uji tidak diubah); pemeriksaan Node khusus sfOtomatis → 4/4 lolos (mati pakai SF12, aktif pakai SF7, fallback SF12 saat "Tidak ada", sfRecommend tetap dihitung).
+- Catatan: Semua 5 tahap PRD selesai. Pemeriksaan sfOtomatis memakai skrip sementara di Temp, bukan berkas tes proyek. Langkah berikutnya: commit Tahap 5, lalu uji manual di browser oleh pemilik proyek.
+
 ## [0.4.0] - 2026-10-21 09:37 (WIB)
 - Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
 - Tahap: Tahap 4 (impor dan ekspor)
