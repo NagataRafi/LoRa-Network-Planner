@@ -17,6 +17,17 @@ Aturan: entri terbaru ditulis di **paling atas** (di bawah garis pemisah ini). J
 
 ---
 
+## [0.5.1] - 2026-10-21 09:52 (WIB)
+- Penanggung jawab: Pemilik proyek (pengguna), dieksekusi oleh Pengembang Web (Frontend) dan Penanggung Jawab Teknis
+- Tahap: dokumen (chore)
+- Ringkasan: Keempat dokumen internal (PRD.md, Tujuan.md, ARSITEKTUR.md, Agents.md) dihentikan pelacakannya; Changelog.md tetap terlacak dan ikut dipush.
+- Perubahan:
+  - Menambah ke `.gitignore`: `/PRD.md`, `/Tujuan.md`, `/ARSITEKTUR.md`, `/Agents.md`
+  - Menjalankan `git rm --cached` untuk keempat file (file tetap ada di disk, tidak dihapus)
+- File terdampak: .gitignore, Changelog.md; PRD.md, Tujuan.md, ARSITEKTUR.md, Agents.md berhenti terlacak
+- Pengujian: tidak berlaku
+- Catatan: Keempat file tetap dibaca AI di awal setiap sesi sesuai bagian 2 `Agents.md`. Riwayat commit lama yang memuat keempat file tetap ada di GitHub.
+
 ## [0.5.0] - 2026-10-21 09:45 (WIB)
 - Penanggung jawab: Pengembang Web (Frontend) dan Penanggung Jawab Teknis
 - Tahap: Tahap 5 (SF rekomendasi dan penyempurnaan)

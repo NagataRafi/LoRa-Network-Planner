@@ -1,2 +1,8 @@
 # Plugin pihak ketiga, bukan bagian proyek
 ponytail/
+
+# Dokumen internal (dibaca AI tiap sesi, tidak ikut repo)
+/PRD.md
+/Tujuan.md
+/ARSITEKTUR.md
+/Agents.md
